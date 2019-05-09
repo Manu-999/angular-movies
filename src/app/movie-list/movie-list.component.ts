@@ -24,14 +24,15 @@ export class MovieListComponent implements OnInit {
     this.typeSubscription = this.route.params.subscribe(params => {
       this.type = params.type;
       if (this.validTypes.includes(params.type)) {
-        this.api.getMovies(this.type).subscribe(res => {
-          console.log(res);
+        this.api.getMovies(this.type).subscribe((res: any) => {
+          this.movies = res.results;
         })
       } else {
         this.router.navigate(['/movies/popular']);
       }
     })
   }
+
   ngOnDestroy() {
     this.typeSubscription.unsubscribe();
   }
