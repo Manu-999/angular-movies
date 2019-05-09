@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiMoviesService } from '../api-movies.service';
 
 
@@ -12,14 +12,24 @@ export class MovieListComponent implements OnInit {
   type: string;
   typeSubscription: any;
   movies: object[];
-  constructor(private route: ActivatedRoute, private api: ApiMoviesService) { }
+  validTypes = ['top_rated', 'popular', 'upcoming'];
+
+  constructor(
+    private route: ActivatedRoute,
+    private api: ApiMoviesService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.typeSubscription = this.route.params.subscribe(params => {
       this.type = params.type;
-      this.api.getMovies(this.type).subscribe(res => {
-        console.log(res);
-      })
+      if (this.validTypes.includes(params.type)) {
+        this.api.getMovies(this.type).subscribe(res => {
+          console.log(res);
+        })
+      } else {
+        this.router.navigate(['/movies/popular']);
+      }
     })
   }
   ngOnDestroy() {
