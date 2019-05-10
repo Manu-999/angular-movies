@@ -10,7 +10,8 @@ import { ApiMoviesService } from '../api-movies.service';
 export class MovieDetailComponent implements OnInit {
   id: string;
   typeSubscription: any;
-  movie: object[];
+  movie: object;
+  similar: object[];
   constructor(
     private route: ActivatedRoute,
     private api: ApiMoviesService
@@ -21,6 +22,9 @@ export class MovieDetailComponent implements OnInit {
       this.id = params.id;
       this.api.getMovies(this.id).subscribe((res: any) => {
         this.movie = res;
+      })
+      this.api.getSimilarMovies(this.id).subscribe((res: any) => {
+        this.similar = res.results;
       })
     })
   }
