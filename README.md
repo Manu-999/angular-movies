@@ -1,6 +1,14 @@
 # AngularMovies
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+Proyecto didáctico con Angular 7, Servicios, API-REST de terceros y flexbox y grid layout
+
+---
+
+## Demo
+
+[VER]()
+
+---
 
 ## Development server
 
