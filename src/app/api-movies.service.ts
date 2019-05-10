@@ -10,20 +10,17 @@ export class ApiMoviesService {
   key = 'da63f96158928b6fc3e74f1d20e6a5ce';
   generateUrl = (type: string) => this.urlBase + `movie/${type}?api_key=` + this.key;
 
-  generateSimilarUrl = (id: string) => this.urlBase + `movie/${id}/similar?api_key=` + this.key;
-
   constructor(private http: HttpClient) { }
 
   getMovies(type: string) {
     return this.http.get(this.generateUrl(type));
   }
 
-  // getMovieDetail(movie: object) {
-
-  //   const url: string = `https://api.themoviedb.org/3/movie/${id}?api_key=323112ea2281b9eb70f319f4df422c6b&language=en-US`;
-  // }
+  getMovie(id: string) {
+    return this.http.get(this.generateUrl(id))
+  }
 
   getSimilarMovies(id: string) {
-    return this.http.get(this.generateSimilarUrl(id));
+    return this.http.get(this.generateUrl(id + '/similar'));
   }
 }
