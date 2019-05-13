@@ -19,7 +19,6 @@ export class MoviesSearchComponent {
     this.typeSubscription = this.api.searchMovies(this.query).subscribe((res: any) => {
       this.movies = res.results;
       this.query = 'valor cambiado!';
-      // console.log(this.movies);
     });
   }
 
