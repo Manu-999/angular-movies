@@ -10,7 +10,6 @@ import { ApiMoviesService } from '../api-movies.service';
 })
 export class MovieListComponent implements OnInit {
   type: string;
-  query: string;
   typeSubscription: any;
   movies: object[];
   validTypes = ['top_rated', 'popular', 'upcoming'];
@@ -31,13 +30,6 @@ export class MovieListComponent implements OnInit {
       } else {
         this.router.navigate(['/movies/popular']);
       }
-    })
-  }
-
-  searchMovie() {
-    this.typeSubscription = this.api.searchMovies(this.query).subscribe((res: any) => {
-      this.movies = res.results;
-      console.log(this.movies);
     })
   }
 

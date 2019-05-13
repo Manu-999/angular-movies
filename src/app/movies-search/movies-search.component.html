@@ -1,0 +1,7 @@
+<h3>Search Movies</h3>
+<!-- <input type="url" [value]="query"  (input)="query=$event.target.value" placeholder="Search movie"> -->
+<!-- <input type="url" #queryNode [value]='query'  placeholder="Search movie"> -->
+<input type="url" [(ngModel)]="query"  placeholder="Search movie">
+
+<button (click)="searchMovie()">Search</button>
+<app-movies-display [films]="movies"></app-movies-display>

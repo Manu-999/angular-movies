@@ -8,9 +8,10 @@ import { MoviesSearchComponent } from './movies-search/movies-search.component';
 const routes: Routes = [
   { path: 'movies/:type', component: MovieListComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
-  { path: 'movie/:query', component: MoviesSearchComponent },
+  { path: 'search/:query', component: MoviesSearchComponent },
+  { path: 'search', component: MoviesSearchComponent },
   { path: '**', redirectTo: 'movies/popular', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
