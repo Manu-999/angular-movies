@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiMoviesService } from '../api-movies.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ApiMoviesService } from '../api-movies.service';
   templateUrl: './movies-search.component.html',
   styleUrls: ['./movies-search.component.scss'],
 })
-export class MoviesSearchComponent implements OnInit {
+export class MoviesSearchComponent {
   query: string = '';
   movies: object[];
   typeSubscription: any;
@@ -22,4 +22,5 @@ export class MoviesSearchComponent implements OnInit {
       // console.log(this.movies);
     });
   }
+
 }
