@@ -21,15 +21,17 @@ export class MovieListComponent implements OnInit {
     this.typeSubscription = this.route.params.subscribe(params => {
       this.type = params.type;
       if (this.validTypes.includes(params.type)) {
-        this.moreMovies();
+        this.moreMovies(true);
       } else {
         this.router.navigate(['/movies/popular']);
       }
     });
   }
-  moreMovies() {
+  moreMovies(reset = false) {
+    if (reset) this.lastPagedLoaded = 0;
     this.api.getMovies(this.type, this.lastPagedLoaded + 1).subscribe((res: any) => {
-          this.movies = [...this.movies, ...res.results];
+          console.log(res);
+          this.movies = reset ? res.results : [...this.movies, ...res.results];
           this.lastPagedLoaded = res.page;
     });
   }

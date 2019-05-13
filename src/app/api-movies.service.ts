@@ -14,7 +14,8 @@ export class ApiMoviesService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(type: string, page: number) {
+  getMovies(type: string, page?: number ) {
+    console.log(page);
     return this.http.get(this.generateUrl(type, page));
   }
 
